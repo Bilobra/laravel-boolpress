@@ -43,7 +43,7 @@ class PostController extends Controller
         ]);
 
         $params['slug'] = str_replace(' ','-', $params['title']);
-        $post = Post::created($params);
+        $post = Post::create($params);
         return redirect()->route('admin.posts.show', $post);
     }
 
