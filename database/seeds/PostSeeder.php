@@ -17,7 +17,7 @@ class PostSeeder extends Seeder
     {
         $categoryIds = Category::all()->pluck('id');
         
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 60; $i++) {
             $post = new Post();
             $post->title = $faker->words(rand(5, 10), true);
             $post->content = $faker->paragraphs(rand(10, 20), true);
