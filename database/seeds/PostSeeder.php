@@ -2,6 +2,7 @@
 
 use App\Category;
 use App\Post;
+use App\Tag;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -16,7 +17,8 @@ class PostSeeder extends Seeder
     public function run(Faker $faker)
     {
         $categoryIds = Category::all()->pluck('id');
-        
+        $tags = Tag::all()->pluck('id');
+
         for ($i = 0; $i < 60; $i++) {
             $post = new Post();
             $post->title = $faker->words(rand(5, 10), true);
@@ -25,6 +27,9 @@ class PostSeeder extends Seeder
             $post->category_id = $faker->optional()->randomElement($categoryIds);
 
             $post->save();
+
+            $tagsId = $tags->shuffle()->take(2)->all();
+            $post->tags()->sync($tagsId);
         }
     }
 }
