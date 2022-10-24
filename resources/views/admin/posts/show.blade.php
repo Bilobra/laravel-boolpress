@@ -11,9 +11,18 @@
         <p><strong>Categoria:</strong> {{ $post->category->name }}</p>
         @endif
 
-        <ul class="d-flex gap-2">
-          <li>{{ $post->created_at }}</li>
-          <li>{{ $post->updated_at }}</li>
+        <div>
+          <p>Tags:</p>
+          @forelse ($post->tags as $tag)
+            <p>{{$tag->name}}</p>
+          @empty
+              <p>nessun tag</p>
+          @endforelse
+        </div>
+
+        <ul class="">
+          <li>create at: {{ $post->created_at }}</li>
+          <li>updated at: {{ $post->updated_at }}</li>
         </ul>
       </div>
       <div class="col-4 text-left d-flex justify-content-end align-items-center">
