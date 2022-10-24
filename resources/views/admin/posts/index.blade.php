@@ -47,7 +47,7 @@
               <td>{{ $post->slug }}</td>
               <td>{{ $post->created_at }}</td>
               <td>
-                <a href="{{ route('admin.posts.show',$post) }}" type="button" class="btn btn-secondary btn-sm">vedi</a>
+                <a href="{{ route('admin.posts.show',$post) }}" type="button" class="btn btn-dark btn-sm">vedi</a>
               </td>
               <td>
                 <form action="{{ route('admin.posts.destroy',$post) }}" method="POST">

@@ -33,6 +33,22 @@
           </div>
 
           <div class="form-group">
+            <label for="category">Categoria</label>
+            <select name="category_id" class="custom-select @error('category_id') is-invalid @enderror" >
+              <option value="">-- nessuna --</option>
+              @foreach($categories as $category)
+                <option @if(old('category_id',$post->category_id) == $category->id) selected @endif value="{{ $category->id }}">{{ $category->name }}</option>
+              @endforeach
+            </select>
+            <small id="helpCategory" class="form-text text-muted">Seleziona la categoria</small>
+            @error('category_id')
+              <div id="category" class="invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+
+          <div class="form-group">
             <label class="d-block" for="category">Tag:</label>
   
             
