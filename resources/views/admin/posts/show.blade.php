@@ -14,7 +14,9 @@
         <div>
           <p>Tags:</p>
           @forelse ($post->tags as $tag)
+           <a href="{{route('admin.tags.show', $tag)}}">
             <p>{{$tag->name}}</p>
+          </a>
           @empty
               <p>nessun tag</p>
           @endforelse
