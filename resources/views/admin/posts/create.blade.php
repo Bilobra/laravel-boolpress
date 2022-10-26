@@ -24,12 +24,12 @@
 
         <div class="form-group">
           <div class="custom-file">
-            <label class="custom-file-label" for="cover">Choose file</label>
-            <input type="file" class="custom-file-input" id="cover"  name="cover" aria-describedby="helpCover">
-            <small id="helpCover" class="form-text text-muted">Inserisci la cover del post.</small>
+            <label class="custom-file-label" for="image">Choose file</label>
+            <input type="file" class="custom-file-input" id="image"  name="image" aria-describedby="helpImage">
+            <small id="helpImage" class="form-text text-muted">Inserisci la cover del post.</small>
          
-            @error('cover')
-            <div id="cover" class="invalid-feedback">
+            @error('image')
+            <div id="image" class="invalid-feedback">
               {{ $message }}
             </div>
            @enderror
