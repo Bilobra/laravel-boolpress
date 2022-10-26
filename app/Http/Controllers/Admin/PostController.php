@@ -48,7 +48,7 @@ class PostController extends Controller
             'category_id' => 'nullable|exists:categories,id',
             'tags.*' => 'exists:tags,id',
             // TODO: VERIFICARE PERCHè NON FUNZIONA |image| AL POSTO DI |file|
-            'image' => 'required|file|mimes:jpg,jpeg,png,gif'
+            'image' => 'nullable|file|mimes:jpg,jpeg,png,gif'
         ]);
 
         if(array_key_exists('image',$params)){
@@ -108,8 +108,14 @@ class PostController extends Controller
             'content' => 'required',
             'category_id' => 'nullable|exists:categories,id',
             'tags.*' => 'exists:tags,id',
+            'image' => 'nullable|file|mimes:jpg,jpeg,png,gif'
+
         ]);
 
+        if(array_key_exists('image',$params)){
+            $img_path = Storage::put('uploads',$params['image']);
+            $params['cover'] = $img_path;
+        }
 
         $post->update($params);
 
@@ -129,7 +135,12 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        Storage::delete( $post->cover );
+
+        if( $post->cover && Storage::exists($post->cover)){
+
+            Storage::delete( $post->cover );
+        }
+
         $post->delete();
         return redirect()->route('admin.posts.index');
     }

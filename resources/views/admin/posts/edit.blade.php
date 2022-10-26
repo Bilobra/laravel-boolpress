@@ -21,6 +21,22 @@
           @csrf
           @method('PUT')
   
+
+          <div class="form-group">
+            <div class="custom-file">
+              <label class="custom-file-label" for="image">Choose file</label>
+              <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image"  name="image" aria-describedby="helpImage">
+              <small id="helpImage" class="form-text text-muted">Inserisci la cover del post.</small>
+           
+              @error('image')
+                <div id="image" class="invalid-feedback">
+                  {{ $message }}
+                </div>
+              @enderror
+            </div>
+          </div>
+
+
           <div class="form-group">
             <label for="title">Titolo</label>
             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ old('title', $post->title) }}" name="title" aria-describedby="helpTitle">

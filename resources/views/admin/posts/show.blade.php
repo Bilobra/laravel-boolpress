@@ -5,11 +5,11 @@
     <div class="row">
 
 
-      <div class="col-4">
-        @if ($post->cover)
-            <img src="{{asset('storage/'. $post->cover)}}" alt="{{$post->title}}" width="300px">
-        @endif
-      </div>
+      @if ($post->cover)
+        <div class="col-4">
+              <img src="{{asset('storage/'. $post->cover)}}" alt="{{$post->title}}" width="300px">
+        </div>
+      @endif
 
 
       <div class="col-8">
