@@ -18,9 +18,24 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <form action="{{ route('admin.posts.store') }}" method="POST">
+      <form action="{{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
+
+        <div class="form-group">
+          <div class="custom-file">
+            <label class="custom-file-label" for="cover">Choose file</label>
+            <input type="file" class="custom-file-input" id="cover"  name="cover" aria-describedby="helpCover">
+            <small id="helpCover" class="form-text text-muted">Inserisci la cover del post.</small>
+         
+            @error('cover')
+            <div id="cover" class="invalid-feedback">
+              {{ $message }}
+            </div>
+           @enderror
+          </div>
+        </div>
+
 
         <div class="form-group">
           <label for="title">Titolo</label>
