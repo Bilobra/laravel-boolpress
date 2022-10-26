@@ -3,6 +3,15 @@
     
 <div class="container">
     <div class="row">
+
+
+      <div class="col-4">
+        @if ($post->cover)
+            <img src="{{asset('storage/'. $post->cover)}}" alt="{{$post->title}}" width="300px">
+        @endif
+      </div>
+
+
       <div class="col-8">
         <h1>{{ $post->title }}</h1>
         <p>{{ $post->slug }}</p>

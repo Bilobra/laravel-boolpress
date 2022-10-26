@@ -25,7 +25,7 @@
         <div class="form-group">
           <div class="custom-file">
             <label class="custom-file-label" for="image">Choose file</label>
-            <input type="file" class="custom-file-input" id="image"  name="image" aria-describedby="helpImage">
+            <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image"  name="image" aria-describedby="helpImage">
             <small id="helpImage" class="form-text text-muted">Inserisci la cover del post.</small>
          
             @error('image')
