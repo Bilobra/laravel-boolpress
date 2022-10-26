@@ -45,7 +45,7 @@
               <div id="category" class="invalid-feedback">
                 {{ $message }}
               </div>
-            @enderror
+            @enderror 
           </div>
 
           <div class="form-group">
