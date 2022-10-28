@@ -7,7 +7,7 @@
 
       @if ($post->cover)
         <div class="col-4">
-              <img src="{{asset('storage/'. $post->cover)}}" alt="{{$post->title}}" width="300px">
+              <img src="{{$post->cover}}" alt="{{$post->title}}" width="300px">
         </div>
       @endif
 

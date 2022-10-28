@@ -54,7 +54,7 @@ class PostController extends Controller
         ]);
 
         if(array_key_exists('image',$params)){
-            $img_path = Storage::put('uploads',$params['image']);
+            $img_path = Storage::disk('images')->put('post_covers',$params['image']);
             $params['cover'] = $img_path;
         }
 
@@ -116,7 +116,7 @@ class PostController extends Controller
         ]);
 
         if(array_key_exists('image',$params)){
-            $img_path = Storage::put('uploads',$params['image']);
+            $img_path = Storage::disk('images')->put('post_covers',$params['image']);
             $params['cover'] = $img_path;
         }
 
@@ -139,9 +139,9 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
 
-        if( $post->cover && Storage::exists($post->cover)){
+        if( $post->cover && Storage::disk('images')->exists($post->cover)){
 
-            Storage::delete( $post->cover );
+            Storage::disk('images')->delete( $post->cover );
         }
 
         $post->delete();

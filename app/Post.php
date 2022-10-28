@@ -23,4 +23,8 @@ class Post extends Model
     {
         return $this->belongsToMany('App\Tag');
     }
+
+    public function getCoverAttribute($value){
+        return asset('images/'.$value);
+    }
 }
