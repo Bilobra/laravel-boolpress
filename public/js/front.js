@@ -1943,9 +1943,10 @@ __webpack_require__.r(__webpack_exports__);
     fetchPosts: function fetchPosts() {
       var _this = this;
       axios.get('/api/posts').then(function (res) {
-        // console.log(res.data)
-        var posts = res.data.posts;
-        _this.posts = posts;
+        // console.log(res.data.result)
+        // const {posts} = res.data.result
+        // console.log(posts);
+        _this.posts = res.data.result;
       });
     }
   },
@@ -1971,14 +1972,25 @@ var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c("div", {
-    staticClass: "container"
-  }, [_vm.post.cover ? _c("img", {
+    staticClass: "col-6 d-flex justify-content-center py-4"
+  }, [_c("div", {
+    staticClass: "card",
+    staticStyle: {
+      width: "18rem"
+    }
+  }, [_vm.post.cover_path ? _c("img", {
     staticClass: "card-img-top",
     attrs: {
-      src: _vm.post.cover,
+      src: _vm.post.cover_path,
       alt: "..."
     }
-  }) : _vm._e()]);
+  }) : _vm._e(), _vm._v(" "), _c("div", {
+    staticClass: "card-body"
+  }, [_c("h5", {
+    staticClass: "card-title"
+  }, [_vm._v("titolo:" + _vm._s(_vm.post.title))]), _vm._v(" "), _c("p", {
+    staticClass: "card-text"
+  }, [_vm._v(_vm._s(_vm.post.date))])])])]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
@@ -2002,6 +2014,8 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "container"
+  }, [_c("section", {
+    staticClass: "row justify-content-between align-items-center py-5"
   }, [_vm._l(_vm.posts, function (post) {
     return _c("PostCard", {
       key: post.id,
@@ -2009,7 +2023,7 @@ var render = function render() {
         post: post
       }
     });
-  }), _vm._v(">\n")], 2);
+  }), _vm._v(">\n\n    ")], 2)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;

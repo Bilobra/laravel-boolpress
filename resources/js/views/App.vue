@@ -1,6 +1,14 @@
 <template>
     <div class="container">
-        <PostCard v-for="post in posts" :key="post.id" :post="post"></PostCard>>
+        <section class="row justify-content-between align-items-center py-5">
+            <PostCard v-for="post in posts" :key="post.id" :post="post"></PostCard>>
+
+        </section>
+        <!-- <div v-for="post in posts" :key="post.id">
+
+            <h2>{{post.title}}</h2>
+        </div> -->
+        
     </div>
 
 
@@ -11,7 +19,7 @@ import PostCard from '../components/PostCard.vue'
 export default {
 
     components: {
-        PostCard
+        PostCard,
     },
     data() {
         return {
@@ -22,9 +30,11 @@ export default {
     methods: {
         fetchPosts() {
             axios.get('/api/posts').then((res) => {
-                // console.log(res.data)
-                const {posts} = res.data
-                this.posts = posts
+                // console.log(res.data.result)
+                // const {posts} = res.data.result
+                // console.log(posts);
+                this.posts = res.data.result
+                
             })
         }
     },
