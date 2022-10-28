@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $result = Post::orderBy('created_at', 'desc')->with('category','tags')->paginate(12);
+        $success = true;
+
+        return response()->json(compact('result','success'));
     }
 
     /**
