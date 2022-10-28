@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('welcome');
 });
 
@@ -28,10 +28,13 @@ Route::middleware('auth')
         Route::get('/home' , 'HomeController@index')->name('home');
         Route::resource('posts', 'PostController');
         Route::resource('tags', 'TagController')->only(['show']);
-    });
+});
+
+
+// rotta fallback
+Route::get('{any?}', function () {
+    return view('guest.home');
+})->where('any', '.*');
 
 
 
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
