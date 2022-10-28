@@ -27,4 +27,11 @@ class Post extends Model
     public function getCoverAttribute($value){
         return asset('images/'.$value);
     }
+
+    public function getDateAttribute()
+    {
+        return $this->created_at->format('d/m/Y');
+    }
+
+    protected $appends = ['cover', 'date'];
 }
