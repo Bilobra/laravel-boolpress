@@ -3,7 +3,12 @@
 
         <h3>Blog:</h3>
         <section class="row justify-content-between align-items-center py-5">
-            <PostCard v-for="post in posts" :key="post.id" :post="post"></PostCard>>
+            <router-link :to="{ name: 'posts.show', params: { slug: post.slug } }" v-for="post in posts" :key="post.id" class="text-decoration-none text-reset text-black">
+
+                <PostCard :post="post"></PostCard>
+
+            </router-link>
+            <!-- <PostCard v-for="post in posts" :key="post.id" :post="post"></PostCard> -->
 
         </section>
     </div>
