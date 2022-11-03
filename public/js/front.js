@@ -2095,6 +2095,12 @@ __webpack_require__.r(__webpack_exports__);
         _this.post = post;
       })["catch"](function (err) {
         // console.log(err)
+        var status = err.response.status;
+        if (status === 404) {
+          _this.$router.replace({
+            name: '404'
+          });
+        }
       });
     }
   },
@@ -2252,13 +2258,15 @@ var render = function render() {
     _c = _vm._self._c;
   return _c("div", {
     staticClass: "container py-5"
+  }, [_c("div", {
+    staticClass: "text-center"
   }, [_c("h1", [_vm._v("404")]), _vm._v(" "), _c("p", [_vm._v("Ops. la pagina che cercavi non esiste")]), _vm._v(" "), _c("router-link", {
     attrs: {
       to: {
         name: "home"
       }
     }
-  }, [_c("p", [_vm._v("Torna alla Home!")])])], 1);
+  }, [_c("p", [_vm._v("Torna alla Home!")])])], 1)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;

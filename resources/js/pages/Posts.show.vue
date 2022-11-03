@@ -52,8 +52,13 @@ export default {
 
                 this.post = post
 
-            }).catch(err => {
+            }).catch((err) => {
                 // console.log(err)
+                const { status } = err.response
+
+                if (status === 404) {
+                    this.$router.replace({ name: '404' })
+                }
             })
         }
     },
