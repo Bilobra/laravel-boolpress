@@ -1,6 +1,6 @@
 <template>
     <div class="container py-5">
-        <div class="text-center">
+        <div class="text-center alert alert-danger p-4" role="alert" >
             <h1>404</h1>
             <p>Ops. la pagina che cercavi non esiste</p>
             <router-link :to="{name: 'home'}">

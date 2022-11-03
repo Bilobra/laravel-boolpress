@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::limit(60)->get();
+        $posts = Post::orderBy('created_at', 'desc')->limit(50)->get();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -51,6 +51,7 @@ class PostController extends Controller
             'tags.*' => 'exists:tags,id',
             // TODO: VERIFICARE PERCHè NON FUNZIONA |image| AL POSTO DI |file|
             'image' => 'nullable|file|mimes:jpg,jpeg,png,gif'
+            // 'image' => 'nullable|image|max:2048'
         ]);
 
         if(array_key_exists('image',$params)){
@@ -112,6 +113,7 @@ class PostController extends Controller
             'category_id' => 'nullable|exists:categories,id',
             'tags.*' => 'exists:tags,id',
             'image' => 'nullable|file|mimes:jpg,jpeg,png,gif'
+            // 'image' => 'nullable|image|max:2048'
 
         ]);
 

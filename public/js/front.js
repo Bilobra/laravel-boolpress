@@ -2259,7 +2259,10 @@ var render = function render() {
   return _c("div", {
     staticClass: "container py-5"
   }, [_c("div", {
-    staticClass: "text-center"
+    staticClass: "text-center alert alert-danger p-4",
+    attrs: {
+      role: "alert"
+    }
   }, [_c("h1", [_vm._v("404")]), _vm._v(" "), _c("p", [_vm._v("Ops. la pagina che cercavi non esiste")]), _vm._v(" "), _c("router-link", {
     attrs: {
       to: {
