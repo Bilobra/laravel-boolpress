@@ -16,8 +16,8 @@ class PostController extends Controller
     public function index()
     {
         // $result = Post::orderBy('created_at', 'desc')->with('category','tags')->paginate(12);
-        $result = Post::orderBy('created_at','desc')->with('category', 'tags')->limit(20)->get();
-        
+        $result = Post::orderBy('created_at', 'desc')->with('category', 'tags')->limit(20)->get();
+
 
         return response()->json(compact('result'));
     }
@@ -39,9 +39,14 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $post = Post::where('slug', $slug)->with('category', 'tags')->first();
+
+        return response()->json([
+            'post' => $post,
+            'success' => true
+        ]);
     }
 
     /**
